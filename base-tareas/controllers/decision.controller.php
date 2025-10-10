@@ -29,11 +29,23 @@ $data['segundos'] = $data['segundos_iniciales'] % 60;
 
 // Exercicio 4
 $data["div_titulo_ex4"] = "Exercicio 4";
-$data['ano'] = 2025;
-$data['es_bisiexto'] = ($data['ano'] % 4 == 0 && $data['ano'] % 100 != 0) || $data['ano'] % 400 == 0;
+$data['ano'] = 2012;
+$data['es_bisiesto'] = (($data['ano'] % 4 == 0 && $data['ano'] % 100 != 0) || ($data['ano'] % 400 == 0));
 
+// Exercicio 5
+$data["div_titulo_ex5"] = "Exercicio 5";
+$data['sueldo'] = 2500;
+$data['descuento'] = $data['sueldo'] <= 1000 ? 10 : ($data['sueldo'] <= 2000 ? 5 : 3);
 
+// Exercicio 6
+$data["div_titulo_ex6"] = "Exercicio 6";
+$data['nota'] = 8.75;
 
+// Exercicio 7
+$data['bebida'] = "Mondariz";
+switch ($data['bebida']) {
+    
+}
 /*
  * Llamamos a las vistas
  */

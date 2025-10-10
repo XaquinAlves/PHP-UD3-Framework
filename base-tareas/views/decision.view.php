@@ -61,14 +61,43 @@
         </div>
     </div>
     <!-- Exercicio  4 -->
-        <div class="col-6">
+    <div class="col-6">
         <div class="card shadow mb-4">
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary"><?php echo $data['div_titulo_ex4']; ?></h6>
             </div>
             <div class="card-body">
-                O ano <?= $data['ano'] ?> <?= $data['es_bisiesto'] ? "" : "NON" ?> é bisiexto
+                <?= $data['es_bisiesto'] ? "<p class='text-success'>O ano $data[ano] é bisiexto</p>" : "<p class='text-danger'>O ano $data[ano] non é bisiexto</p>" ?>
+            </div>
+        </div>
+    </div>
+    <!-- Exercicio  5 -->
+        <div class="col-6">
+        <div class="card shadow mb-4">
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><?php echo $data['div_titulo_ex5']; ?></h6>
+            </div>
+            <div class="card-body">
+                De tu salario de <?= $data['sueldo'] ?>€ te descuentan un <?= $data['descuento'] ?>% quedandote <?= $data['sueldo'] * (1 - ($data['descuento']/100)) ?>€
+                <?php if($data['descuento'] == 3 ) {echo "<div class='alert alert-success'>Felicidades, tienes un salario por encima de la media.</div>";} ?>
+            </div>
+        </div>
+    </div>
+    <!-- Exercicio  6 -->
+        <div class="col-6">
+        <div class="card shadow mb-4">
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"><?php echo $data['div_titulo_ex6']; ?></h6>
+            </div>
+            <div class="card-body">
+                <?= $data['nota'] < 5 ? "<div class='alert alert-danger'>Suspenso</div>" :
+                    ($data['nota'] < 6 ? "<div class='alert alert-warning'>Aprobado</div>" :
+                    ($data['nota'] < 7 ? "<div class='alert alert-info'>Bien</div>" :
+                    ($data['nota'] < 8.75 ? "<div class='alert alert-info'>Notable</div>" :
+                    ($data['nota'] < 10 ? "<div class='alert alert-success'>Sobresaliente</div>" : "<div class='alert alert-success'>Matricula</div>")))) ?>
             </div>
         </div>
     </div>
