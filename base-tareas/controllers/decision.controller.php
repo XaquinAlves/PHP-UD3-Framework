@@ -44,7 +44,14 @@ $data['nota'] = 8.75;
 // Exercicio 7
 $data['bebida'] = "Mondariz";
 switch ($data['bebida']) {
-    
+    case "Marcilla": case "Bonka":
+        $data['tipo_bebida'] = "café";
+        break;
+    case "Coca-Cola": case "Kas": case "Pepsi":
+        $data['tipo_bebida'] = "refresco";
+        break;
+    case "Mondariz": case "Cabreiroá": case "Sousas":
+        $data['tipo_bebida'] = "agua";
 }
 /*
  * Llamamos a las vistas
