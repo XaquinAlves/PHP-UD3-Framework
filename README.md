@@ -1,3 +1,6 @@
+# PHP
+All code created during my Server Side Development lessons in PHP, using PHP8
+
 Ejemplos de:
 1.  Declaración de variables
 2.  Tipos de variables y cambios automáticos de las mismas (typejuggling)
