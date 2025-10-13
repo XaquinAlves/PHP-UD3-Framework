@@ -79,7 +79,11 @@
                 <h6 class="m-0 font-weight-bold text-primary"><?php echo $data['div_titulo_ex5']; ?></h6>
             </div>
             <div class="card-body">
-                De tu salario de <?= $data['sueldo'] ?>€ te descuentan <?= $data['descuento'] ?>€ quedandote <?= $data['neto'] ?>€
+                <div class="row">
+                    <div class="col-3">Salario bruto: <?= number_format($data['sueldo'],2,',') ?></div>
+                    <div class="col-3">Descuento: <?= $data['descuento'] ?></div>
+                    <div class="col-3">Salario Neto: <?= $data['neto'] ?></div>
+                </div>
                 <?php if($data['maior_media']){?>
                     <div class='alert alert-success'>
                         Felicidades, tienes un salario por encima de la media.
