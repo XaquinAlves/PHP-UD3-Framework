@@ -1,7 +1,6 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?php echo $data['titulo']; ?></h1>
-
 </div>
 
 <!-- Content Row -->
@@ -81,7 +80,11 @@
             </div>
             <div class="card-body">
                 De tu salario de <?= $data['sueldo'] ?>€ te descuentan un <?= $data['descuento'] ?>% quedandote <?= $data['sueldo'] * (1 - ($data['descuento']/100)) ?>€
-                <?php if($data['descuento'] == 3 ) {echo "<div class='alert alert-success'>Felicidades, tienes un salario por encima de la media.</div>";} ?>
+                <?php if($data['descuento'] == 3){?>
+                    <div class='alert alert-success'>
+                        Felicidades, tienes un salario por encima de la media.
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -93,11 +96,11 @@
                 <h6 class="m-0 font-weight-bold text-primary"><?php echo $data['div_titulo_ex6']; ?></h6>
             </div>
             <div class="card-body">
-                <?= $data['nota'] < 5 ? "<div class='alert alert-danger'>Suspenso</div>" :
-                    ($data['nota'] < 6 ? "<div class='alert alert-warning'>Aprobado</div>" :
-                    ($data['nota'] < 7 ? "<div class='alert alert-info'>Bien</div>" :
-                    ($data['nota'] < 8.75 ? "<div class='alert alert-info'>Notable</div>" :
-                    ($data['nota'] < 10 ? "<div class='alert alert-success'>Sobresaliente</div>" : "<div class='alert alert-success'>Matricula</div>")))) ?>
+                <div class="row">
+                    <div class="col-6">Nota: <?= number_format($data['nota'],2,',') ?></div>
+                    <div class="col-6"><?= $data['texto_nota'] ?></div>
+
+                </div>
             </div>
         </div>
     </div>

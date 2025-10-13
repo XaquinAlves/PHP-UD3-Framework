@@ -38,8 +38,14 @@ $data['sueldo'] = 2500;
 $data['descuento'] = $data['sueldo'] <= 1000 ? 10 : ($data['sueldo'] <= 2000 ? 5 : 3);
 
 // Exercicio 6
-$data["div_titulo_ex6"] = "Exercicio 6";
-$data['nota'] = 8.75;
+$data['div_titulo_ex6'] = "Exercicio 6";
+$data['nota'] = 4.9;
+$data['texto_nota'] = $data['nota'] < 5 ? "<div class='alert alert-danger'>Suspenso</div>" :
+                        ($data['nota'] < 6 ? "<div class='alert alert-warning'>Aprobado</div>" :
+                        ($data['nota'] < 7 ? "<div class='alert alert-info'>Bien</div>" :
+                        ($data['nota'] < 8.75 ? "<div class='alert alert-info'>Notable</div>" :
+                        ($data['nota'] < 10 ? "<div class='alert alert-success'>Sobresaliente</div>" :
+                        "<div class='alert alert-success'>Matricula</div>"))));
 
 // Exercicio 7
 $data['bebida'] = "Mondariz";
