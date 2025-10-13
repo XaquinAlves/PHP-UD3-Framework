@@ -10,7 +10,7 @@ $data["div_titulo_ex1"] = "Exercicio 1";
 $data['num1'] = 28;
 $data['num2'] = 14;
 $data["e_divisible"] = ($data['num1'] % $data['num2'] == 0);
-var_dump($data["e_divisible"]);
+
 
 // Exercicio 2
 $data["div_titulo_ex2"] = "Exercicio 2";
@@ -35,11 +35,46 @@ $data['es_bisiesto'] = (($data['ano'] % 4 == 0 && $data['ano'] % 100 != 0) || ($
 // Exercicio 5
 $data["div_titulo_ex5"] = "Exercicio 5";
 $data['sueldo'] = 2500;
-$data['descuento'] = $data['sueldo'] <= 1000 ? 10 : ($data['sueldo'] <= 2000 ? 5 : 3);
+$data['descuento'] = obtenerDescuento(1, $data['sueldo']) + obtenerDescuento(2, $data['sueldo'])  + obtenerDescuento(3, $data['sueldo']);
+$data['neto'] = $data['sueldo'] - $data['descuento'];
+$data['maior_media'] = $data['neto'] > 2000;
+
+function obtenerDescuento(int $tramo,int|float $sueldo) : float {
+    switch($tramo){
+        case 1: {
+            if($sueldo <= 1000 ){
+                return $sueldo * 0.10;
+            } else {
+                return 100;
+            }
+            break;
+        }
+        case 2: {
+            if ($sueldo > 1000) {
+                if ($sueldo <= 2000){
+                    return ($sueldo - 1000) * 0.05;
+                } else {
+                    return 50;
+                }
+            } else {
+                return 0;
+            }
+            break;
+        }
+        case 3: {
+            if ($sueldo > 2000) {
+                return ($sueldo - 2000) * 0.03;
+            } else {
+                return 0;
+            }
+            break;
+        }
+    }
+}
 
 // Exercicio 6
 $data['div_titulo_ex6'] = "Exercicio 6";
-$data['nota'] = 4.9;
+$data['nota'] = 8.75;
 $data['texto_nota'] = $data['nota'] < 5 ? "<div class='alert alert-danger'>Suspenso</div>" :
                         ($data['nota'] < 6 ? "<div class='alert alert-warning'>Aprobado</div>" :
                         ($data['nota'] < 7 ? "<div class='alert alert-info'>Bien</div>" :
@@ -58,6 +93,8 @@ switch ($data['bebida']) {
         break;
     case "Mondariz": case "Cabreiroá": case "Sousas":
         $data['tipo_bebida'] = "agua";
+        break;
+    default : $data['tipo_bebida'] = "Bebida non soportada";
 }
 /*
  * Llamamos a las vistas
