@@ -27,9 +27,8 @@
                     </div>
                 </form>
                 <div class="row">
-                    <?php if(isset($data['maior'])){ ?>
-                        <div class='col-6'><div class='alert alert-success'>Maior: <?= $data['maior'] ?></div></div>
-                        <div class='col-6'><div class='alert alert-success'>Menor: <?= $data['menor'] ?></div></div>
+                    <?php if(isset($data['ordenados'])){ ?>
+                        <div class='col-12'><div class='alert alert-success'>Lista ordenada: <?= $data['ordenados'] ?></div></div>
                     <?php } else if (isset($data['erros'])) { ?>
                         <div class='col-12'><div class='alert alert-danger'><?= $data['erros']['numeros'] ?></div></div>
                     <?php } ?>
