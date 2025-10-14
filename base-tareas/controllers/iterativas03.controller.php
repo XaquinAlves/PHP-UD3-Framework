@@ -13,18 +13,18 @@ if(!empty($_POST)){
     if(count($erros) > 0) {
         $data['erros'] = $erros;
     }else {
-        $auxBase = explode('|', $_POST['entradanums']);
+        $auxMatriz = explode('|', $_POST['entradanums']);
         $auxLength;
-        $auxFinal = [];
-        for($i = 0; $i < count($auxBase); $i++){
-            $auxLine = explode(',', $auxBase[$i]);
-            $auxFinal= array_merge($auxFinal, $auxLine);
+        $auxLineal = [];
+        for($i = 0; $i < count($auxMatriz); $i++){
+            $auxLine = explode(',', $auxMatriz[$i]);
+            $auxLineal= array_merge($auxLineal, $auxLine);
             $auxLength = count($auxLine);
         }
-        $auxFinal = bubbleSort($auxFinal);
+        $auxLineal = bubbleSort($auxLineal);
         $result = [];
-        for($i = 0; $i < count($auxFinal); $i += $auxLength){
-            $result[] = array_slice($auxFinal,$i,$auxLength);
+        for($i = 0; $i < count($auxLineal); $i += $auxLength){
+            $result[] = array_slice($auxLineal,$i,$auxLength);
         }
         for($i = 0; $i < count($result); $i++){
             $result[$i] = implode(',', $result[$i]);
@@ -42,12 +42,12 @@ function checkForm(array $data) : array {
         $erros['numeros'] = "Inserte un valor no campo";
     } else {
         $check = true;
-        $auxBase = explode('|', $_POST['entradanums']);
-        $auxFinal = [];
+        $auxMatriz = explode('|', $_POST['entradanums']);
+        $auxLineal = [];
         $lengthFirst;
-        for($i = 0; $i < count($auxBase) && $check; $i++){
-            $auxLine = explode(',', $auxBase[$i]);
-            $auxFinal= array_merge($auxFinal, $auxLine);
+        for($i = 0; $i < count($auxMatriz) && $check; $i++){
+            $auxLine = explode(',', $auxMatriz[$i]);
+            $auxLineal= array_merge($$auxLineal, $auxLine);
             if($i === 0){
                 $lengthFirst = count($auxLine);
             }
@@ -57,8 +57,8 @@ function checkForm(array $data) : array {
         if(!$check){
             $erros['numeros'] = "Las lineas deben ser de las misma longitud";
         } else {
-            for($i = 0; $i < count($auxFinal) && $check; $i++){
-                $check = is_numeric($auxFinal[$i]);
+            for($i = 0; $i < count($auxLineal) && $check; $i++){
+                $check = is_numeric($auxLineal[$i]);
             }
 
             if(!$check){
