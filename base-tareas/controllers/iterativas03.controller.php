@@ -14,14 +14,24 @@ if(!empty($_POST)){
         $data['erros'] = $erros;
     }else {
         $auxBase = explode('|', $_POST['entradanums']);
-        print_r($auxBase);
+        $auxLength;
         $auxFinal = [];
         for($i = 0; $i < count($auxBase); $i++){
             $auxLine = explode(',', $auxBase[$i]);
             $auxFinal= array_merge($auxFinal, $auxLine);
+            $auxLength = count($auxLine);
         }
-        print_r($auxFinal);
-        $data['ordenados'] = implode(',', $auxFinal);
+        $auxFinal = bubbleSort($auxFinal);
+        $result = [];
+        for($i = 0; $i < count($auxFinal); $i += $auxLength){
+            $result[] = array_slice($auxFinal,$i,$auxLength);
+        }
+        for($i = 0; $i < count($result); $i++){
+            $result[$i] = implode(',', $result[$i]);
+        }
+        $result = implode('|', $result);
+
+        $data['ordenados'] = $result;
     }
 }
 
@@ -34,18 +44,29 @@ function checkForm(array $data) : array {
         $check = true;
         $auxBase = explode('|', $_POST['entradanums']);
         $auxFinal = [];
-        for($i = 0; $i < count($auxBase); $i++){
+        $lengthFirst;
+        for($i = 0; $i < count($auxBase) && $check; $i++){
             $auxLine = explode(',', $auxBase[$i]);
             $auxFinal= array_merge($auxFinal, $auxLine);
+            if($i === 0){
+                $lengthFirst = count($auxLine);
+            }
+            $check = $lengthFirst == count($auxLine);
         }
 
-        for($i = 0; $i < count($auxFinal) && $check; $i++){
+        if(!$check){
+            $erros['numeros'] = "Las lineas deben ser de las misma longitud";
+        } else {
+            for($i = 0; $i < count($auxFinal) && $check; $i++){
                 $check = is_numeric($auxFinal[$i]);
             }
 
-        if(!$check){
-            $erros['numeros'] = "Solo se permiten numeros e comas";
+            if(!$check){
+                $erros['numeros'] = "Solo se permiten numeros, comas e barras";
+            }
         }
+
+
     }
 
     return $erros;
