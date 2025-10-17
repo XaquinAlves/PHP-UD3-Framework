@@ -67,7 +67,7 @@ function checkForm(array $data) : array {
             }
 
             if(!$check){
-                $erros['numeros'] = "Solo se permiten numeros, comas e barras";
+                $erros['numeros'] = "Solo se permiten numeros, comas y barras ( | )";
             }
         }
 
