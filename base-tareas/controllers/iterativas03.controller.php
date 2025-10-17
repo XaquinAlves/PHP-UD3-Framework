@@ -5,7 +5,7 @@ $data['div_titulo'] = "Ordenar matriz";
 
 
 
-if(!empty($_POST)){
+if(isset($_POST['enviar'])){
     //Comprobar
     $erros = checkForm($_POST);
     $data['input_numeros'] = $_POST['entradanums'];
@@ -16,16 +16,20 @@ if(!empty($_POST)){
         $auxMatriz = explode('|', $_POST['entradanums']);
         $auxLength;
         $auxLineal = [];
+
         for($i = 0; $i < count($auxMatriz); $i++){
             $auxLine = explode(',', $auxMatriz[$i]);
             $auxLineal= array_merge($auxLineal, $auxLine);
             $auxLength = count($auxLine);
         }
+
         $auxLineal = bubbleSort($auxLineal);
         $result = [];
+
         for($i = 0; $i < count($auxLineal); $i += $auxLength){
-            $result[] = array_slice($auxLineal,$i,$auxLength);
+            $result[] = array_slice($auxLineal, $i, $auxLength);
         }
+
         for($i = 0; $i < count($result); $i++){
             $result[$i] = implode(',', $result[$i]);
         }
@@ -39,13 +43,13 @@ function checkForm(array $data) : array {
     $erros = [];
 
     if(empty($data['entradanums'])){
-        $erros['numeros'] = "Inserte un valor no campo";
+        $erros['numeros'] = "Inserte un valor en el campo";
     } else {
         $check = true;
         $auxMatriz = explode('|', $_POST['entradanums']);
         $auxLineal = [];
         $lengthFirst;
-        
+
         for($i = 0; $i < count($auxMatriz) && $check; $i++){
             $auxLine = explode(',', $auxMatriz[$i]);
             $auxLineal= array_merge($auxLineal, $auxLine);
@@ -74,7 +78,24 @@ function checkForm(array $data) : array {
 }
 
 
+function matrizLineal(array $auxMatrix) : array {
+        $auxLength;
+        $auxLineal = [];
+        $lengthFirst;
 
+        for($i = 0; $i < count($auxMatriz); $i++){
+            $auxLine = explode(',', $auxMatriz[$i]);
+            $auxLineal= array_merge($auxLineal, $auxLine);
+            if($i === 0){
+                $lengthFirst = count($auxLine);
+            }
+            if($lengthFirst != count($auxLine)){
+                return null;
+            }
+        }
+
+        return $auxLineal;
+}
 
 
 function bubbleSort(array $arr) : array {

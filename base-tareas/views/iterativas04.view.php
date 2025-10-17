@@ -19,19 +19,15 @@
                 <form action="" method="post">
                     <input type="hidden" name="sec" value="formulario" />
                     <div class="mb-3">
-                        <label for="entradanums">Introduzca una matriz de numeros separados por comas y barras ( | )</label>
-                        <textarea class="form-control" id="entradanums" name="entradanums" rows="3" placeholder="Ej: 1,2|3,4|5,6"><?= $data['input_numeros'] ?? "" ?></textarea>
+                        <label for="entradanums">Introduza un texto</label>
+                        <textarea class="form-control" id="entradatext" name="entradatext" rows="3"><?= $data['input_texto'] ?? "" ?></textarea>
                     </div>
                     <div class="mb-3">
                         <input type="submit" value="Enviar" class="btn btn-primary" name="enviar" id="enviar"/>
                     </div>
                 </form>
                 <div class="row">
-                    <?php if(isset($data['ordenados'])){ ?>
-                        <div class='col-12'><div class='alert alert-success'>Matriz ordenada: <?= $data['ordenados'] ?></div></div>
-                    <?php } else if (isset($data['erros'])) { ?>
-                        <div class='col-12'><div class='alert alert-danger'><?= $data['erros']['numeros'] ?></div></div>
-                    <?php } ?>
+                    Cuenta de las letras: <?php print_r($data['cuenta_letras']) ?>
                 </div>
             </div>
         </div>
