@@ -45,9 +45,10 @@ function checkForm(array $data) : array {
         $auxMatriz = explode('|', $_POST['entradanums']);
         $auxLineal = [];
         $lengthFirst;
+        
         for($i = 0; $i < count($auxMatriz) && $check; $i++){
             $auxLine = explode(',', $auxMatriz[$i]);
-            $auxLineal= array_merge($$auxLineal, $auxLine);
+            $auxLineal= array_merge($auxLineal, $auxLine);
             if($i === 0){
                 $lengthFirst = count($auxLine);
             }
