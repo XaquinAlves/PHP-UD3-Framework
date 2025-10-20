@@ -27,7 +27,11 @@
                     </div>
                 </form>
                 <div class="row">
-                    Cuenta de las letras: <?php print_r($data['cuenta_letras']) ?>
+                    <?php if(isset($data['cuenta_letras'])){ ?>
+                        <div class='col-12'><div class='alert alert-success'>Cuenta de las letras: <?= $data['cuenta_letras'] ?></div></div>
+                    <?php } else if (isset($data['erros'])) { ?>
+                        <div class='col-12'><div class='alert alert-danger'><?= $data['erros']['texto'] ?></div></div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
