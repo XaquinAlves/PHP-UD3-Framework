@@ -1,5 +1,6 @@
 # Docker: PHP & MySQL
-Contiene mis proyectos de PHP para la asignatura de Desarrollo Web en Entorno Servidor. Utilizo un Docker con PHP y MySQL proporcionado por mi profesor en el repositorio https://bitbucket.org/rgcenteno/docker-mysql/src/main. A continuación dejo el README original del repositorio para el contenedor a fecha de creación de este repositorio (En un futuro puede que el contenedor original sufra cambios respecto a este o viceversa).
+Contiene mis proyectos de PHP para la asignatura de Desarrollo Web en Entorno Servidor, Unidad 3. Utilizo un Docker con PHP y MySQL proporcionado por mi profesor en el repositorio https://bitbucket.org/rgcenteno/docker-mysql/src/main. A continuación dejo el README original del repositorio para el contenedor a fecha de creación de este repositorio (En un futuro puede que el contenedor original sufra cambios respecto a este o viceversa).
+Para este proyecto, también se utiliza un framework con bootstrap, mas información en el readme dentro de www
 
 ## php
 Se ha añadido soporte para trabajar con otras versiones de php. Se ha modificado el archivo docker de la máquina para instalar:
